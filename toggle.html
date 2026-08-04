@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Dark Mode</title>
+
+    <style>
+        .dark-mode {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="container">
+        <h1>Dark Mode App</h1>
+        <p>This is my dark mode app</p>
+
+        <button id="toggle-button">
+            Toggle Dark Mode
+        </button>
+    </section>
+
+
+    <script>
+
+        const togglebutton = document.getElementById("toggle-button");
+
+        const container = document.getElementById("container");
+
+
+        togglebutton.addEventListener("click", function(){
+
+            container.classList.toggle("dark-mode");
+
+        });
+
+    </script>
+
+</body>
+</html>
