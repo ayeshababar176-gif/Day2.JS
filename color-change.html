@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Changer</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    transition:0.5s;
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:16px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    color:white;
+}
+
+#red{
+    background:red;
+}
+
+#green{
+    background:green;
+}
+
+#blue{
+    background:blue;
+}
+
+#reset{
+    background:black;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Color Changer</h1>
+
+<button id="red">Red</button>
+<button id="green">Green</button>
+<button id="blue">Blue</button>
+<button id="reset">Reset</button>
+
+</div>
+
+<script>
+
+const red=document.getElementById("red");
+const green=document.getElementById("green");
+const blue=document.getElementById("blue");
+const reset=document.getElementById("reset");
+
+red.addEventListener("click",function(){
+    document.body.style.backgroundColor="red";
+});
+
+green.addEventListener("click",function(){
+    document.body.style.backgroundColor="green";
+});
+
+blue.addEventListener("click",function(){
+    document.body.style.backgroundColor="blue";
+});
+
+reset.addEventListener("click",function(){
+    document.body.style.backgroundColor="white";
+});
+
+</script>
+
+</body>
+</html>

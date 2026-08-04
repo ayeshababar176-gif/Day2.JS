@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:400px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:70%;
+    padding:10px;
+    font-size:16px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+
+button{
+    padding:10px 15px;
+    font-size:16px;
+    border:none;
+    border-radius:5px;
+    background:green;
+    color:white;
+    cursor:pointer;
+}
+
+ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+li{
+    background:#eee;
+    padding:10px;
+    margin-top:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-radius:5px;
+}
+
+.delete{
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>To-Do List</h1>
+
+<input type="text" id="task" placeholder="Enter Task">
+<button id="add">Add</button>
+
+<ul id="list"></ul>
+
+</div>
+
+<script>
+
+const task=document.getElementById("task");
+const add=document.getElementById("add");
+const list=document.getElementById("list");
+
+let tasks=JSON.parse(localStorage.getItem("tasks")) || [];
+
+function displayTasks(){
+
+    list.innerHTML="";
+
+    tasks.forEach(function(item,index){
+
+        const li=document.createElement("li");
+        li.textContent=item;
+
+        const del=document.createElement("button");
+        del.textContent="Delete";
+        del.className="delete";
+
+        del.addEventListener("click",function(){
+
+            tasks.splice(index,1);
+            localStorage.setItem("tasks",JSON.stringify(tasks));
+            displayTasks();
+
+        });
+
+        li.appendChild(del);
+        list.appendChild(li);
+
+    });
+
+}
+
+add.addEventListener("click",function(){
+
+    if(task.value.trim()!==""){
+
+        tasks.push(task.value);
+
+        localStorage.setItem("tasks",JSON.stringify(tasks));
+
+        task.value="";
+
+        displayTasks();
+
+    }
+
+});
+
+displayTasks();
+
+</script>
+
+</body>
+</html>
